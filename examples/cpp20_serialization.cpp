@@ -75,7 +75,7 @@ auto tag_invoke(value_to_tag<user>, value const& jv)
 }
 
 // Aedis serialization
-void to_bulk(std::pmr::string& to, user const& u)
+void to_bulk(std::string& to, user const& u)
 {
    aedis::resp3::to_bulk(to, serialize(value_from(u)));
 }

@@ -44,7 +44,7 @@ public:
    using executor_type = Executor;
    using this_type = connection_base<Executor, Derived>;
 
-   connection_base(executor_type ex, std::pmr::memory_resource* resource)
+   connection_base(executor_type ex)
    : writer_timer_{ex}
    , read_timer_{ex}
    , guarded_op_{ex}
@@ -265,7 +265,7 @@ private:
       reqs_.erase(std::remove(std::begin(reqs_), std::end(reqs_), info));
    }
 
-   using reqs_type = std::pmr::deque<std::shared_ptr<req_info>>;
+   using reqs_type = std::deque<std::shared_ptr<req_info>>;
 
    template <class> friend struct detail::reader_op;
    template <class> friend struct detail::writer_op;
@@ -365,8 +365,8 @@ private:
    timer_type read_timer_;
    detail::guarded_operation<executor_type> guarded_op_;
 
-   std::pmr::string read_buffer_;
-   std::pmr::string write_buffer_;
+   std::string read_buffer_;
+   std::string write_buffer_;
    std::size_t cmds_ = 0;
    reqs_type reqs_;
 };

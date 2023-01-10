@@ -310,7 +310,7 @@ To send your own data type define a `to_bulk` function like this
 struct mystruct {...};
 
 // Serialize it in to_bulk.
-void to_bulk(std::pmr::string& to, mystruct const& obj)
+void to_bulk(std::string& to, mystruct const& obj)
 {
    std::string dummy = "Dummy serializaiton string.";
    aedis::resp3::to_bulk(to, dummy);

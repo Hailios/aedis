@@ -50,18 +50,16 @@ public:
    /// Contructs from an executor.
    explicit
    basic_connection(
-      executor_type ex,
-      std::pmr::memory_resource* resource = std::pmr::get_default_resource())
-   : base_type{ex, resource}
+      executor_type ex)
+   : base_type{ex}
    , stream_{ex}
    {}
 
    /// Contructs from a context.
    explicit
    basic_connection(
-      boost::asio::io_context& ioc,
-      std::pmr::memory_resource* resource = std::pmr::get_default_resource())
-   : basic_connection(ioc.get_executor(), resource)
+      boost::asio::io_context& ioc)
+   : basic_connection(ioc.get_executor())
    { }
 
    /// Returns the associated executor.

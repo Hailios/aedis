@@ -56,9 +56,8 @@ public:
    explicit
    basic_connection(
       executor_type ex,
-      boost::asio::ssl::context& ctx,
-      std::pmr::memory_resource* resource = std::pmr::get_default_resource())
-   : base_type{ex, resource}
+      boost::asio::ssl::context& ctx)
+   : base_type{ex}
    , stream_{ex, ctx}
    { }
 
@@ -66,9 +65,8 @@ public:
    explicit
    basic_connection(
       boost::asio::io_context& ioc,
-      boost::asio::ssl::context& ctx,
-      std::pmr::memory_resource* resource = std::pmr::get_default_resource())
-   : basic_connection(ioc.get_executor(), ctx, resource)
+      boost::asio::ssl::context& ctx)
+   : basic_connection(ioc.get_executor(), ctx)
    { }
 
    /// Returns the associated executor.
