@@ -211,8 +211,7 @@ public:
     *  \param resource Memory resource.
     */
     explicit
-    request(config cfg = config{true, true, false, true, true},
-            )
+    request(config cfg = config{true, true, false, true, true})
     : cfg_{cfg}, payload_() {}
 
     //// Returns the number of commands contained in this request.

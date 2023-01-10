@@ -48,9 +48,9 @@ public:
    : writer_timer_{ex}
    , read_timer_{ex}
    , guarded_op_{ex}
-   , read_buffer_{resource}
-   , write_buffer_{resource}
-   , reqs_{resource}
+   , read_buffer_{}
+   , write_buffer_{}
+   , reqs_{}
    {
       writer_timer_.expires_at(std::chrono::steady_clock::time_point::max());
       read_timer_.expires_at(std::chrono::steady_clock::time_point::max());
